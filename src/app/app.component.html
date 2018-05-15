@@ -19,29 +19,37 @@
     <div class="col-sm-3"></div>
 
     <div class="col-sm-6" >
-        <div class="row mt-1 rounded text-white " *ngFor="let item of refPostList">
-            <div class="col-sm-12 bg-info rounded  make-center h4" style="height: 150px;">
-                {{item.post}}
+        <div class="mt-1 rounded text-white " *ngFor="let item of refPostList">
+            <div class="row">
+                <div class="col-sm-12 bg-info rounded make-center" style="height: 150px;">
+                    <span class="h4">{{item.post}}</span>
+                </div>
+            </div>
+            
+            <div class="row">
+                <button type="button"  (click)="increaseLikeCount(item)"  class="col-sm-6 btn-sm  btn btn-primary">
+                    L: {{item.likeCount}}
+                </button>
+                <button type="button" (click)="increaseDislikeCount(item);" class="col-sm-6  btn-sm btn btn-secondary">
+                    D: {{item.dislikeCount}}
+                </button>
+            </div>
+            
+
+            <div class="row">
+                <input [(ngModel)]="item.comment" class="mt-1 col-sm-10 form-control form-control-sm" type="text" placeholder="Comment Here..">
+                <button type="button" (click)="addComment(item)" class="mt-1 col-sm-2 btn-sm  text-white btn btn-warning btn-block">
+                  Comment
+                </button>
             </div>
 
-            <button type="button"  (click)="increaseLikeCount(item)"  class="col-sm-6 btn-sm  btn btn-primary">
-                L: {{item.likeCount}}
-            </button>
-            <button type="button" (click)="increaseDislikeCount(item);" class="col-sm-6  btn-sm btn btn-secondary">
-                D: {{item.dislikeCount}}
-            </button>
-
-            <input [(ngModel)]="item.comment" class="mt-1 col-sm-9 form-control form-control-sm" type="text" placeholder="Comment Here..">
-            <button type="button" (click)="addComment(item)" class="mt-1 col-sm-3 btn btn-warning btn-block">
-              Comment
-            </button>
-
-          <div class="col-sm-12">
-            <ul class="list-group" *ngFor="let innerItem of item.commentList">
-              <li class="text-dark list-group-item">{{innerItem}}</li>
-            </ul>
-          </div>
-
+            <div class="row" *ngFor="let innerItem of item.commentList">
+              <div class="text-dark col-sm-10 list-group-item " style="margin: 0px; padding: 5px">{{innerItem}}</div>
+              <button type="button" class="col-sm-2  text-white btn btn-sm btn-danger btn-block">
+                Del
+              </button>
+            </div>
+            
         </div>
     </div>  
 
