@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  post = '';
   title = 'DACBOOK';
   postPlaceholder = 'Whats app...';
 
@@ -19,7 +20,7 @@ export class AppComponent {
     'dislikeCount': 1000,
   };
 
-  refPostList = [this.refPost, this.refPost];
+  refPostList = [];
 
 
   increaseLikeCount(post) {
@@ -28,6 +29,19 @@ export class AppComponent {
 
   increaseDislikeCount(post) {
     post.dislikeCount += 1;
+  }
+
+  postOnWall() {
+    console.log(this.post);
+
+    const newPost = {
+      'post' : this.post,
+      'likeCount' : 0,
+      'dislikeCount' : 0
+    };
+
+    this.refPostList.push(newPost);
+    this.post = '';
   }
 
 }
