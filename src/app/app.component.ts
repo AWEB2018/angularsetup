@@ -22,7 +22,7 @@ export class AppComponent {
     'commentList' : ['nice!!']
   };
 
-  refPostList = [];
+  refPostList = [this.refPost];
 
 
   increaseLikeCount(post) {
