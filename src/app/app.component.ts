@@ -19,5 +19,15 @@ export class AppComponent {
     'dislikeCount': 1000,
   };
 
-  refPostList = [this.refPost, this.refPost, this.refPost];
+  refPostList = [this.refPost, this.refPost];
+
+
+  increaseLikeCount(post) {
+    post.likeCount += 1;
+  }
+
+  increaseDislikeCount(post) {
+    post.dislikeCount += 1;
+  }
+
 }

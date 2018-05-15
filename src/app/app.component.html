@@ -15,20 +15,20 @@
 
     <div class="col-sm-6" >
       <div *ngFor="let item of refPostList" class="mt-1 row rounded text-white " >
-        <div class="row  bg-info" style="height: 200px;">
-            <div class="col-sm-12 make-center">
+        <div class="row  bg-info justify-content-center align-items-center" style="height: 200px;">
+            <div class="col-sm-12">
                 {{item.post}}
               </div>
         </div>
         
-        <div class="row">
+        <div class="row mt-1">
             <div class="col-sm-6" >
-                <button type="button" style="width: 100%" class="btn btn-primary btn-block  btn-sm">
+                <button type="button"  (click)="increaseLikeCount(item)"  class="btn btn-primary btn-block">
                   L: {{item.likeCount}}
                 </button>
             </div>
             <div class="col-sm-6">
-              <button type="button" style="width: 100%" class="btn btn-secondary btn-block btn-sm">
+              <button (click)="increaseDislikeCount(item);" type="button"  class="btn btn-secondary btn-block">
                 D: {{item.dislikeCount}}
               </button>
             </div>
