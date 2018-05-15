@@ -37,15 +37,18 @@
             
 
             <div class="row">
-                <input [(ngModel)]="item.comment" class="mt-1 col-sm-10 form-control form-control-sm" type="text" placeholder="Comment Here..">
+                <input [(ngModel)]="item.comment" class="mt-1 col-sm-9 form-control form-control-sm" type="text" placeholder="Comment Here..">
                 <button type="button" (click)="addComment(item)" class="mt-1 col-sm-2 btn-sm  text-white btn btn-warning btn-block">
                   Comment
                 </button>
+                <button type="button" (click)="toggleComment(item)"  class="mt-1 col-sm-1 btn-sm  text-white btn btn-secondary btn-block">
+                    Toggle
+                </button>
             </div>
 
-            <div class="row" *ngFor="let innerItem of item.commentList">
+            <div class="row" *ngFor="let innerItem of item.commentList" [hidden]="!item.toggleComment">
               <div class="text-dark col-sm-10 list-group-item " style="margin: 0px; padding: 5px">{{innerItem}}</div>
-              <button type="button" class="col-sm-2  text-white btn btn-sm btn-danger btn-block">
+              <button type="button" class="col-sm-2  text-white btn btn-sm btn-danger">
                 Del
               </button>
             </div>

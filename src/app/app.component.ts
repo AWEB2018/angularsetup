@@ -54,4 +54,8 @@ export class AppComponent {
     item.comment = '';
   }
 
+  toggleComment(item) {
+    item.toggleComment = !item.toggleComment;
+  }
+
 }
