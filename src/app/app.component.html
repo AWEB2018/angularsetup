@@ -48,9 +48,12 @@
 
             <div class="row" *ngFor="let innerItem of item.commentList" [hidden]="!item.toggleComment">
               <div class="text-dark col-sm-10 list-group-item " style="margin: 0px; padding: 5px">{{innerItem}}</div>
-              <button type="button" class="col-sm-2  text-white btn btn-sm btn-danger">
-                Del
-              </button>
+              
+              <div class="col-sm-2">
+                  <button type="button" class="text-white btn btn-sm btn-danger btn-block mt-1">
+                      Del
+                    </button>
+              </div>
             </div>
             
         </div>
