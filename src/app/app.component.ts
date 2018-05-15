@@ -18,6 +18,8 @@ export class AppComponent {
     'post' : '“I can accept failure. Everyone fails at something. But I can’t accept not trying.”',
     'likeCount': 100,
     'dislikeCount': 1000,
+    'comment' : '',
+    'commentList' : ['nice!!']
   };
 
   refPostList = [];
@@ -37,11 +39,19 @@ export class AppComponent {
     const newPost = {
       'post' : this.post,
       'likeCount' : 0,
-      'dislikeCount' : 0
+      'dislikeCount' : 0,
+      'comment' : '',
+      'commentList' : []
     };
 
     this.refPostList.push(newPost);
     this.post = '';
+  }
+
+
+  addComment(item) {
+    item.commentList.push(item.comment);
+    item.comment = '';
   }
 
 }

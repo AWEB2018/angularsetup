@@ -19,8 +19,8 @@
     <div class="col-sm-3"></div>
 
     <div class="col-sm-6" >
-        <div class="row mt-1 row rounded text-white bg-info " *ngFor="let item of refPostList">
-            <div class="col-sm-12 make-center h4" style="height: 200px;">
+        <div class="row mt-1 rounded text-white " *ngFor="let item of refPostList">
+            <div class="col-sm-12 bg-info  make-center h4" style="height: 150px;">
                 {{item.post}}
             </div>
 
@@ -34,6 +34,22 @@
               D: {{item.dislikeCount}}
             </button>
           </div>
+
+          <div class="col-sm-9">
+            <input [(ngModel)]="item.comment" class="form-control form-control-sm" type="text" placeholder="Comment Here..">
+          </div>
+          <div class="col-sm-3">
+            <button type="button" (click)="addComment(item)" class="btn btn-warning btn-block">
+              Comment
+            </button>
+          </div>
+
+          <div class="col-sm-12">
+            <ul class="list-group" *ngFor="let innerItem of item.commentList">
+              <li class="text-dark list-group-item">{{innerItem}}</li>
+            </ul>
+          </div>
+
         </div>
     </div>  
 
