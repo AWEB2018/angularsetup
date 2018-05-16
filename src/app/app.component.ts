@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-dac',
@@ -9,43 +10,39 @@ export class AppComponent {
   post = '';
   title = 'DACBOOK';
   postPlaceholder = 'Whats app...';
+  refPostList = [];
 
-  postOfDay = '“I can accept failure. Everyone fails at something. But I can’t accept not trying.”';
-  likeCount = 100;
-  dislikeCount = 1000;
-
-  refPost = {
-    'post' : '“I can accept failure. Everyone fails at something. But I can’t accept not trying.”',
-    'likeCount': 100,
-    'dislikeCount': 1000,
-    'comment' : '',
-    'commentList' : ['nice!!']
-  };
-
-  refPostList = [this.refPost];
-
+  // FOR HTTP REQUEST
+  http: HttpClient;
+  constructor(http: HttpClient) {
+    this.http = http;
+  }
 
   increaseLikeCount(post) {
-    post.likeCount += 1;
+    post.LIKE_COUNT += 1;
   }
 
   increaseDislikeCount(post) {
-    post.dislikeCount += 1;
+    post.DISLIKE_COUNT += 1;
   }
 
   postOnWall() {
     console.log(this.post);
 
     const newPost = {
-      'post' : this.post,
-      'likeCount' : 0,
-      'dislikeCount' : 0,
+      'POST' : this.post,
+      'LIKE_COUNT' : 0,
+      'DISLIKE_COUNT' : 0,
       'comment' : '',
       'commentList' : []
     };
 
     this.refPostList.push(newPost);
     this.post = '';
+
+    // lets connect to server
+    const url = 'http://localhost:4000/insertpost';
+    this.http.post(url, newPost);
   }
 
 
