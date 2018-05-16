@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 @Component({
@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   post = '';
   title = 'DACBOOK';
   postPlaceholder = 'Whats app...';
@@ -16,6 +16,13 @@ export class AppComponent {
   http: HttpClient;
   constructor(http: HttpClient) {
     this.http = http;
+  }
+
+  ngOnInit() {
+    const url = 'http://localhost:4000/readallpost';
+    this.http.get(url).subscribe((data) => {
+      this.refPostList = data;
+    });
   }
 
   increaseLikeCount(post) {
@@ -42,11 +49,15 @@ export class AppComponent {
 
     // lets connect to server
     const url = 'http://localhost:4000/insertpost';
-    this.http.post(url, newPost);
+    this.http.post(url, newPost).subscribe();
   }
 
 
   addComment(item) {
+    if(item.commentList == undefined) {
+      item.commentList = [];
+    }
+
     item.commentList.push(item.comment);
     item.comment = '';
   }
