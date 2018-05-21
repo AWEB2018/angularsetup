@@ -20,8 +20,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     const url = 'http://localhost:4000/readallpost';
-    this.http.get(url).subscribe((data) => {
-      this.refPostList = data;
+    this.http.get(url).subscribe((data:any) => {
+      if (data) {
+        this.refPostList = data;
+      }
     });
   }
 
